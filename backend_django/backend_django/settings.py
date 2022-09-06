@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'backend_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'skymarket',
+        'USER': 'skymarket',
+        'PASSWORD': 'skymarket',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
