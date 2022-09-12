@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'djoser',
     'ads',
     'users',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +134,25 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'django_media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# DJOSER
+
+
+
+# Rest-framework, swagger, djoser
+
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Ads API',
+    'DESCRIPTION': 'Ads site',
+    'VERSION': '1.0.0',
+}
 
 DJOSER = {
     'SERIALIZERS': {
