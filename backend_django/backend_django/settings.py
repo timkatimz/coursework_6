@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'djoser',
+    'corsheaders',
     'ads',
     'users',
     'drf_spectacular',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -134,10 +136,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'django_media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# CORS
+CORS_ALLOW_ALL_ORIGINS = True
 
-
-
-# Rest-framework, swagger, djoser
+# Rest-framework, swagger
 
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
@@ -153,6 +155,8 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION': 'Ads site',
     'VERSION': '1.0.0',
 }
+
+# Djoser
 
 DJOSER = {
     'SERIALIZERS': {
