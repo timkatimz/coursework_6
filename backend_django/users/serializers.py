@@ -1,7 +1,7 @@
 from djoser.serializers import UserCreateSerializer
 from rest_framework import serializers
 
-from backend_django.users.models import User
+from .models import User
 
 
 class UserRegistrationSerializer(UserCreateSerializer):

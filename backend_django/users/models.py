@@ -1,11 +1,10 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.base_user import AbstractBaseUser
 from django.db import models
 
 from .managers import UserManager
 
 
-class User(AbstractUser):
-
+class User(AbstractBaseUser):
     ADMIN = 'admin'
     USER = 'user'
     ROLES = [
