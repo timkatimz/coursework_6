@@ -1,6 +1,6 @@
 from django.db import models
 
-from backend_django.users.models import User
+from users.models import User
 
 
 class Ad(models.Model):
@@ -9,6 +9,7 @@ class Ad(models.Model):
     description = models.TextField(blank=True, max_length=4000)
     created_at = models.DateField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    image = models.ImageField(upload_to='ads_images/', null=True)
 
     class Meta:
         verbose_name = 'Ad'
