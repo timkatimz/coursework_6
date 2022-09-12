@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from djoser.views import UserViewSet
 from rest_framework.routers import SimpleRouter
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 
 # Register user router
@@ -27,4 +28,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(users_router.urls)),
     path('', include('ads.urls')),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 ]
