@@ -19,6 +19,7 @@ class User(AbstractBaseUser):
     password = models.CharField(max_length=200)
     role = models.CharField(max_length=5, choices=ROLES, default='user', null=True)
     image = models.ImageField(upload_to='user_avatars/', null=True)
+    is_active = models.BooleanField(null=True, default=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'phone', "role"]
