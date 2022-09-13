@@ -3,7 +3,7 @@ from django.contrib.auth.models import BaseUserManager
 
 class UserManager(BaseUserManager):
 
-    def create_user(self, email, first_name, last_name, phone, password=None):
+    def create_user(self, email, first_name, last_name, phone, role, password=None):
         if not email:
             raise ValueError('Users must have an email address')
         user = self.model(
@@ -19,7 +19,7 @@ class UserManager(BaseUserManager):
 
         return user
 
-    def create_superuser(self, email, first_name, last_name, phone, password=None):
+    def create_superuser(self, email, first_name, last_name, phone, role, password=None):
         """
         Superuser creation - works with command createsuperuser
         """
