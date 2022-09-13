@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 
 from ads.models import Ad
-from ads.serializers import AdSerializer, AdListSerializer
+from ads.serializers import AdSerializer, AdListSerializer, AdRetrieveSerializer
 
 
 class AdViewSet(ModelViewSet):
@@ -12,6 +12,7 @@ class AdViewSet(ModelViewSet):
     serializer_class = AdSerializer
     serializer_action_classes = {
         'list': AdListSerializer,
+        'retrieve': AdRetrieveSerializer,
     }
 
     def get_serializer_class(self):
