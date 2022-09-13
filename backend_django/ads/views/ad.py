@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 
 from ads.models import Ad
-from ads.serializers import AdSerializer
+from ads.serializers import AdSerializer, AdListSerializer
 
 
 class AdViewSet(ModelViewSet):
@@ -10,3 +10,12 @@ class AdViewSet(ModelViewSet):
     """
     queryset = Ad.objects.all()
     serializer_class = AdSerializer
+    serializer_action_classes = {
+        'list': AdListSerializer,
+    }
+
+    def get_serializer_class(self):
+        try:
+            return self.serializer_action_classes[self.action]
+        except (KeyError, AttributeError):
+            return super().get_serializer_class()
