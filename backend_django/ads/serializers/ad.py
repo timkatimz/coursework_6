@@ -20,7 +20,6 @@ class AdListSerializer(serializers.ModelSerializer):
 class AdRetrieveSerializer(serializers.ModelSerializer):
 
     # User information
-
     phone = serializers.SlugRelatedField(
         source='author',
         many=False,
@@ -47,3 +46,8 @@ class AdRetrieveSerializer(serializers.ModelSerializer):
         fields = ['pk', 'image', 'title', 'price', 'phone', 'description',
                   'author_first_name', 'author_last_name', 'author_id']
 
+
+class AdCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ad
+        fields = ['image', 'title', 'price', 'description']
