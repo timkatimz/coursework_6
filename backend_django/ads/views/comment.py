@@ -4,7 +4,7 @@ from ads.models import Comment
 from ads.serializers import CommentSerializer
 
 
-class AdViewSet(ModelViewSet):
+class CommentViewSet(ModelViewSet):
     """
     A viewset for GET, POST
     """
