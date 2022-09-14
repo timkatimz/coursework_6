@@ -6,8 +6,6 @@ from rest_framework.viewsets import ModelViewSet
 from ads.models import Ad
 from ads.serializers import AdSerializer, AdListSerializer, AdRetrieveSerializer, AdCreateSerializer
 
-from users.models import User
-
 
 class AdViewSet(ModelViewSet):
     queryset = Ad.objects.all()

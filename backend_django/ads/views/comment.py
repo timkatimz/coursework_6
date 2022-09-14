@@ -5,8 +5,7 @@ from ads.serializers import CommentSerializer
 
 
 class CommentViewSet(ModelViewSet):
-    """
-    A viewset for GET, POST
-    """
-    queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+
+    def get_queryset(self):
+        return Comment.objects.filter(ad_id=self.kwargs['ad_id'])
