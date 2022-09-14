@@ -158,9 +158,9 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
 }
 
-SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES': ('JWT',),
-}
+# SIMPLE_JWT = {
+#     'AUTH_HEADER_TYPES': ('JWT',),
+# }
 
 # Djoser
 
