@@ -1,7 +1,8 @@
+from rest_framework.generics import get_object_or_404
 from rest_framework.viewsets import ModelViewSet
 
-from ads.models import Comment
-from ads.serializers import CommentSerializer, CommentListSerializer
+from ads.models import Comment, Ad
+from ads.serializers import CommentSerializer, CommentListSerializer, CommentCreateSerializer
 
 
 class CommentViewSet(ModelViewSet):
@@ -9,7 +10,7 @@ class CommentViewSet(ModelViewSet):
     serializer_action_classes = {
         'list': CommentListSerializer,
         # 'retrieve': AdRetrieveSerializer,
-        # 'create': AdCreateSerializer,
+        'create': CommentCreateSerializer,
     }
 
     def get_queryset(self):
@@ -20,3 +21,8 @@ class CommentViewSet(ModelViewSet):
             return self.serializer_action_classes[self.action]
         except (KeyError, AttributeError):
             return super().get_serializer_class()
+
+    def perform_create(self, serializer):
+        ad = Ad.objects.get(pk=self.kwargs['ad_id'])
+        serializer.save(author=self.request.user, ad=ad)
+

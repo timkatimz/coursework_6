@@ -40,3 +40,9 @@ class CommentListSerializer(serializers.ModelSerializer):
                   'author_id', 'author_first_name', 'author_last_name',
                   # 'author_image',
                   'ad_id']
+
+
+class CommentCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ['text']
