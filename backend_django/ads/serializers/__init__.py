@@ -1,5 +1,5 @@
 from .ad import AdSerializer, AdListSerializer, AdRetrieveSerializer, AdCreateSerializer
-from .comment import CommentSerializer
+from .comment import CommentSerializer, CommentListSerializer
 
 __all__ = [
     'AdSerializer',
@@ -7,4 +7,5 @@ __all__ = [
     'AdRetrieveSerializer',
     'AdCreateSerializer',
     'CommentSerializer',
+    'CommentListSerializer',
 ]
