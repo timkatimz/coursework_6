@@ -1,22 +1,23 @@
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from ads.models import Ad
 from ads.serializers import AdSerializer, AdListSerializer, AdRetrieveSerializer, AdCreateSerializer
+from ads.permissions import UserPermissions
 
 
 class AdViewSet(ModelViewSet):
     queryset = Ad.objects.all()
     serializer_class = AdListSerializer
+
     serializer_action_classes = {
         'list': AdListSerializer,
         'retrieve': AdRetrieveSerializer,
         'create': AdCreateSerializer,
         'update': AdCreateSerializer,
     }
-    # permission_classes = [IsAuthenticated]
+    permission_classes = (UserPermissions,)
 
     @action(detail=False, methods=['get'], url_path=r'me', serializer_class=AdListSerializer)
     def user_ads(self, request, *args, **kwargs):

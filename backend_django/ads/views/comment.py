@@ -1,8 +1,8 @@
-from rest_framework.generics import get_object_or_404
 from rest_framework.viewsets import ModelViewSet
 
 from ads.models import Comment, Ad
 from ads.serializers import CommentSerializer, CommentListSerializer, CommentCreateSerializer
+from ads.permissions import UserPermissions
 
 
 class CommentViewSet(ModelViewSet):
@@ -13,6 +13,8 @@ class CommentViewSet(ModelViewSet):
         'create': CommentCreateSerializer,
         'update': CommentCreateSerializer,
     }
+
+    permission_classes = (UserPermissions,)
 
     def get_queryset(self):
         return Comment.objects.filter(ad_id=self.kwargs['ad_id'])
