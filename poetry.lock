@@ -212,6 +212,20 @@ offline = ["drf-spectacular-sidecar"]
 sidecar = ["drf-spectacular-sidecar"]
 
 [[package]]
+name = "gunicorn"
+version = "20.1.0"
+description = "WSGI HTTP Server for UNIX"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.extras]
+eventlet = ["eventlet (>=0.24.1)"]
+gevent = ["gevent (>=1.4.0)"]
+setproctitle = ["setproctitle"]
+tornado = ["tornado (>=0.2)"]
+
+[[package]]
 name = "idna"
 version = "3.3"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -484,7 +498,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "9b0e625061b5561126fb43fe16d1e150e704e37802e37b68fa2590c2406eae9e"
+content-hash = "44c1eb431d69583088cb903db29411fe67b78782f60ed5b80253a53a45778809"
 
 [metadata.files]
 asgiref = [
@@ -636,6 +650,10 @@ djoser = [
 drf-spectacular = [
     {file = "drf-spectacular-0.23.1.tar.gz", hash = "sha256:d1724da1fd4ae99d66333b1c8530f3c51788d87b380f5951830bf8405f234120"},
     {file = "drf_spectacular-0.23.1-py3-none-any.whl", hash = "sha256:2e42ae16717a5c3b2ae8632ac2b92f7eeb7b4fb9a941bc7879a92343e50ddeb6"},
+]
+gunicorn = [
+    {file = "gunicorn-20.1.0-py3-none-any.whl", hash = "sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e"},
+    {file = "gunicorn-20.1.0.tar.gz", hash = "sha256:e0a968b5ba15f8a328fdfd7ab1fcb5af4470c28aaf7e55df02a99bc13138e6e8"},
 ]
 idna = [
     {file = "idna-3.3-py3-none-any.whl", hash = "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff"},

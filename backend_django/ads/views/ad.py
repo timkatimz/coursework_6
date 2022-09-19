@@ -15,7 +15,7 @@ class AdViewSet(ModelViewSet):
         'retrieve': AdRetrieveSerializer,
         'create': AdCreateSerializer,
     }
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     @action(detail=False, methods=['get'], url_path=r'me')
     def user_ads(self, request, *args, **kwargs):
