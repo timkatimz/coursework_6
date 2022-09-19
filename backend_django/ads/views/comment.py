@@ -9,8 +9,9 @@ class CommentViewSet(ModelViewSet):
     serializer_class = CommentSerializer
     serializer_action_classes = {
         'list': CommentListSerializer,
-        # 'retrieve': AdRetrieveSerializer,
+        'retrieve': CommentListSerializer,
         'create': CommentCreateSerializer,
+        'update': CommentCreateSerializer,
     }
 
     def get_queryset(self):

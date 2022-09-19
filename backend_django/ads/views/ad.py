@@ -9,19 +9,20 @@ from ads.serializers import AdSerializer, AdListSerializer, AdRetrieveSerializer
 
 class AdViewSet(ModelViewSet):
     queryset = Ad.objects.all()
-    serializer_class = AdSerializer
+    serializer_class = AdListSerializer
     serializer_action_classes = {
         'list': AdListSerializer,
         'retrieve': AdRetrieveSerializer,
         'create': AdCreateSerializer,
+        'update': AdCreateSerializer,
     }
     # permission_classes = [IsAuthenticated]
 
-    @action(detail=False, methods=['get'], url_path=r'me')
+    @action(detail=False, methods=['get'], url_path=r'me', serializer_class=AdListSerializer)
     def user_ads(self, request, *args, **kwargs):
         current_user = self.request.user
-        queryset = Ad.objects.filter(author=current_user)
-        page = self.paginate_queryset(queryset)
+        user_ads = Ad.objects.filter(author=current_user)
+        page = self.paginate_queryset(user_ads)
 
         if page is not None:
             serializer = self.get_serializer(page, many=True)
