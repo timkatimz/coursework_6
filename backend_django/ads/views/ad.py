@@ -21,7 +21,13 @@ class AdViewSet(ModelViewSet):
     def user_ads(self, request, *args, **kwargs):
         current_user = self.request.user
         queryset = Ad.objects.filter(author=current_user)
-        serializer = AdListSerializer(queryset, many=True)
+        page = self.paginate_queryset(queryset)
+
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
     def perform_create(self, serializer):
