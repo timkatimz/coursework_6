@@ -1,7 +1,6 @@
 # SkyPro.Python course
 ## CW05. Skymarket - avito-like ads site
 
-
 ### Implementation
 
 1. Backend: django restframework
@@ -9,6 +8,9 @@
 3. Backend-server: gunicorn
 4. Web-server: nginx (from docker image)
 5. Frontend: react (was provided)
+
+frontend available at: localhost:3000  
+backend at: localhost:8000
 
 ### How to launch project locally using docker for every service
 
